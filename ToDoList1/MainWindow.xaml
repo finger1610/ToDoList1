@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ListBox x:Name="lstBoxTasks" Margin="0,17,0,60" HorizontalAlignment="Center" Width="739">
-
+            
 
         </ListBox>
 

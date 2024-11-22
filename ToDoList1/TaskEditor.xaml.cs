@@ -21,6 +21,8 @@ namespace ToDoList1
     {
 
         Dictionary<string, bool> _taskList;
+        public string textTask { get; set; }
+
         public TaskEditor(Dictionary<string, bool> value)
         {
             InitializeComponent();
@@ -30,14 +32,18 @@ namespace ToDoList1
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
-            _taskList.Add(new TextRange(richTxtBoxTask.Document.ContentStart, richTxtBoxTask.Document.ContentEnd).Text, false);
-            this.Close();
+            textTask = new TextRange(richTxtBoxTask.Document.ContentStart, richTxtBoxTask.Document.ContentEnd).Text;
+            if (_taskList.ContainsKey(textTask)!= true)
+                this.Close();
+            
+            else
+                MessageBox.Show("Такая задача уже существует","", MessageBoxButton.OK, MessageBoxImage.Error);
             //запихнуть запись в список уже имеющихся дел
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            textTask = null;
             this.Close();
         }
 
